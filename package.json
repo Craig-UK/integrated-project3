@@ -19,10 +19,11 @@
   "homepage": "https://github.com/Craig-UK/integrated-project3#readme",
   "dependencies": {
     "apollo-server": "^3.6.3",
+    "apollo-server-express": "^3.6.3",
     "bcryptjs": "^2.4.3",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.3"
+    "mongoose": "^6.2.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
