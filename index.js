@@ -7,6 +7,7 @@ const typeDefs = require('./graphql/typeDefs'); // import typeDefs
 const resolvers = require('./graphql/resolvers'); // import resolvers
 const { MONGODB } = require('./config.js'); // Required to be able to connect to the MongoDB server
 
+
 // Creating the server with the Type Definitions and Resolvers
 const server = new ApolloServer({
     typeDefs,
