@@ -29,14 +29,12 @@ module.exports = gql`
         token: String!
         username: String!
         createdAt: String!
-        userRole: String!
     }
     input RegisterInput {
         username: String!
         password: String!
         confirmPassword: String!
         email: String!
-        userRole: String!
     }
     type Query {
         getPosts: [Post]

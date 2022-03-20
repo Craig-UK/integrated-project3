@@ -6,7 +6,6 @@ const userSchema = new Schema({
     password: String,
     email: String,
     createdAt: String,
-    userRole: String,
 });
 
 // Exporting the User model and User Schema to be able to use it in other files
