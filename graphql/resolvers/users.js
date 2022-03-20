@@ -59,7 +59,7 @@ module.exports = {
     },
     async register(
       _,
-      { registerInput: { username, email, password, confirmPassword, userRole } },
+      { registerInput: { username, email, password, confirmPassword } },
       context,
       info
     ) {
@@ -69,7 +69,6 @@ module.exports = {
         email,
         password,
         confirmPassword,
-        userRole
       );
 
       // if not valid, return errors
@@ -98,7 +97,6 @@ module.exports = {
         username,
         password,
         createdAt: new Date().toISOString(),
-        userRole
       });
 
       // save the user to the database
