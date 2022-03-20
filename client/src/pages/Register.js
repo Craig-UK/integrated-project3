@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
@@ -6,6 +7,7 @@ import gql from 'graphql-tag';
 import { useForm } from '../util/hooks';
 
 function Register(props) {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
@@ -17,10 +19,11 @@ function Register(props) {
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, result) {
-        props.history.push('/');
+      navigate('/');
     },
     onError(err) {
         setErrors(err.graphQLErrors[0].extensions.errors);
+        console.log(err);
     },
     variables: values
   });
