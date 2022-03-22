@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../context/auth';
+
 function MenuBar() {
-    //stores the value of the highlighted tab
+  const { user, logout } = useContext(AuthContext);
+  //stores the value of the highlighted tab
   const pathname = window.location.pathname;
-    //populates a variable with the path of the current url within the browser
+  //populates a variable with the path of the current url within the browser
   const path = pathname === '/' ? 'home' : pathname.substring(1);
   // defines the path variable, removing the first character, and translating the "/" path to "home"
   const [activeItem, setActiveItem] = useState(path);
   // highlights the correct tab based on the page, using the path variable
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
+  const menuBar = user ? (
+    <Menu pointing secondary size="massive" color="blue">
+          <Menu.Item
+            name={user.username}
+            //defines the name of the tab
+            active
+            as={Link}
+            // gives us the ability to make use of the React link function
+            to="/"
+            // 
+          />
 
-
-    return (
-
-        <Menu pointing secondary size="massive" color="blue">
+          <Menu.Menu position='right'>
+         <Menu.Item
+            name='logout'
+            onClick={logout}
+          />
+          </Menu.Menu>
+        </Menu>
+  ) : (
+    <Menu pointing secondary size="massive" color="blue">
           <Menu.Item
             name='home'
             //defines the name of the tab
@@ -46,7 +65,8 @@ function MenuBar() {
           />
           </Menu.Menu>
         </Menu>
+  )
 
-    )
+  return menuBar;
 }
 export default MenuBar;
