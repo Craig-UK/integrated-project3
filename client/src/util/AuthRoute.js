@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-import { AuthContext } from '../context/auth';
+import { AuthContext, AuthProvider } from '../context/auth';
 
 function AuthRoute({ component: Component, ...rest }) {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  console.log(user)
+  return (
 
-    // If user is logged in and tries to access an AuthRoute route, they will be redirected to the home page.
-    return (
-        <Routes>
-            <Route
-                {...rest}
-                render={props => 
-                user ? <Navigate to="/"/> : <Component {...props}/>
-            }
-            />
-        </Routes>
-    )
+    <Route
+    
+      {...rest}
+      render={(props) =>
+        user ? <Redirect to="/" replace/> : <Component {...props} />
+      }
+    />
+  );
 }
 
 export default AuthRoute;
