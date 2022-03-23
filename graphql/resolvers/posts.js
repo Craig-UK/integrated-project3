@@ -1,5 +1,5 @@
 const { AUTHENTICATION_ERROR, AuthenticationError } = require('apollo-server');
-const { argsToArgsConfig } = require('graphql/type/definition');
+const { PubSub } = require('graphql-subscriptions');
 
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check-auth');
@@ -43,9 +43,13 @@ module.exports = {
 
             const post = await newPost.save();
 
-            context.pubsub.publish('NEW_POST', {
+            const pubsub = new PubSub();
+
+            console.log(newPost);
+
+            pubsub.publish('NEW_POST', {
                 newPost: post
-            })
+            });
 
             return post;
         },
