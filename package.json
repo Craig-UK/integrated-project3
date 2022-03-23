@@ -24,6 +24,7 @@
     "bcryptjs": "^2.4.3",
     "graphql": "^16.3.0",
     "graphql-config": "^4.1.0",
+    "graphql-subscriptions": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mongoose": "^6.2.5",
@@ -32,6 +33,7 @@
     "semantic-ui-react": "^2.1.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "react-error-overlay": "^6.0.9"
   }
 }
