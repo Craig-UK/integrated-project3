@@ -4,7 +4,8 @@ import { useMutation } from '@apollo/client';
 
 import {Button, Confirm, Icon} from 'semantic-ui-react';
 import { FETCH_POSTS_QUERY } from '../util/graphql'
-    
+import MyPopup from '../util/MyPopup';    
+
 function DeleteButton({ postId, commentId, callback }){
     const [confirmOpen, setConfirmOpen] = useState(false);
 
@@ -33,10 +34,17 @@ function DeleteButton({ postId, commentId, callback }){
     })
     return(
         <>
+        <MyPopup
+           content={commentId ? 'Delete Comment' : 'Delete Post'} 
+           >
+           
             <Button color='red' floated='right' onClick={() => setConfirmOpen(true)}>
-                <Icon name="trash" style={{marginTop: 0}}/>
-                Delete
+            <Icon name="trash" style={{marginTop: 0}}/>
+            Delete
             </Button> 
+       
+           
+           </MyPopup>
             <Confirm open={confirmOpen} onCancel={() => setConfirmOpen(false)} onConfirm={deletePostOrMutation} />
         </>
     )

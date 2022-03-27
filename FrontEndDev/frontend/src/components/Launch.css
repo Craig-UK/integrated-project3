@@ -1,0 +1,54 @@
+.hardleft {
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    left: 0;
+    background-color: rgb(25, 40, 175);
+    color:rgb(255, 255, 255);
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif!important;
+  }
+  .hardright {
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .launchbody{
+
+    text-align: center;
+  
+    background-color: #a6ddd2;
+  
+    font-size: 25px;
+    font-family: "Georgia", serif;
+    color: rgb(41, 24, 190);
+  }
+.Launchform{
+  border-radius: 70%;
+  color: rgb(41, 24, 190);
+}
+
+
+  
+
+  
