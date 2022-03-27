@@ -16,6 +16,7 @@ import Register from './pages/Register.js';
 import Login from './pages/Login.js';
 import Launch from './pages/Launch.js';
 import User from './pages/User.js';
+import SinglePost from './pages/SinglePost.js'
 
 function App() {
   return (
@@ -26,8 +27,9 @@ function App() {
           <AuthRoute exact path="/" component={Launch} />
           <AuthRoute2 exact path="/dash" component={Home} /> 
           <AuthRoute2 exact path="/user" component={User} />           
-          <AuthRoute exact path="/login" component={Login} />
+
           <AuthRoute exact path="/register" component={Register} />
+          <Route exact path= "/posts/:postId" component={SinglePost}></Route>
 
         </Container>
       </Router>

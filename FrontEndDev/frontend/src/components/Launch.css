@@ -43,9 +43,9 @@
     font-family: "Georgia", serif;
     color: rgb(41, 24, 190);
   }
-.Launchform{
-  border-radius: 70%;
-  color: rgb(41, 24, 190);
+.launchForm{
+
+  background-color: rgb(255, 255, 255);
 }
 
 

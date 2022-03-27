@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Button, Form, Image, Container } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 import pic from '../components/GCU-SOCIAL-LOGO2.png';
@@ -47,7 +47,7 @@ function Launch (props) {
         <div className="hardright">
           <div className="centered">
         <div className="form-container">
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : 'launchForm'}>
         <h1>Login</h1>
         
         <Form.Input
@@ -85,6 +85,10 @@ function Launch (props) {
           </ul>
         </div>
       )}
+        <br></br>
+        <Button secondary as={Link} to='/register'>
+              Register
+        </Button>
         </div>
         
 

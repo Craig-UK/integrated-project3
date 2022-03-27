@@ -13,7 +13,16 @@ module.exports = {
             } catch(err) {
                 throw new Error(err);
             }
+        }, 
+        async getPostsbyUser(_,{username}) {
+            try {
+                const posts = await Post.find({username}).sort({ createdAt: -1 }); // Fetches all posts
+                return posts; // Returns the posts found by the const variable above
+            } catch(err) {
+                throw new Error(err);
+            }
         },
+        
         async getPost(_, { postId }) {
             try {
                 const post = await Post.findById(postId); // Finds a specific post by that post's ID
