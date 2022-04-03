@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Transition } from 'semantic-ui-react';
 
+import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
+import PostForm from '../components/PostForm';
+import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function Home() {
-    const { loading, data } =useQuery(FETCH_POST_QUERY);
+    const { user } = useContext(AuthContext);
+    const { loading, data } =useQuery(FETCH_POSTS_QUERY);
 
     return (  
     <Grid columns={1} >
@@ -14,44 +17,30 @@ function Home() {
             <h1>Recent Posts</h1>
         </Grid.Row>
         <Grid.Row className="feed">
-            
-        { loading ? (
-            <h1>Loading posts...</h1>
-        ) : (
-            data && 
-            data.getPosts.map ((post) => (
-                <Grid.Column  key={post.id} style={{marginBottom: 40, marginLeft: 160, marginRight: 160 }}>
-                    <PostCard post={post} />
+        { user && (
+
+                <Grid.Column className="newPost"style={{marginBottom: 25, marginLeft: 230, marginRight: 160 }}>
+                    <PostForm />
                 </Grid.Column>
-            ))
-        )}
+
+            )} 
+         { loading ? (
+                <h1>Loading posts...</h1>
+            ) : (
+                <Transition.Group>
+                    {                data && 
+                data.getPosts.map ((post) => (
+                    <Grid.Column key={post.id} style={{marginBottom: 40, marginLeft: 160, marginRight: 160 }}>
+                        <PostCard post={post} />
+                    </Grid.Column>))}
+                </Transition.Group>
+
+            )}
     </Grid.Row>
     <Grid.Row className="user-title"></Grid.Row>
     </Grid>
     );
 }
 
-const FETCH_POST_QUERY = gql`
-{
-    getPosts {
-        id 
-        body 
-        createdAt 
-        username 
-        likeCount
-        
-        likes{
-            username
-        }
-        commentCount
-        comments{
-            id
-            username
-            createdAt
-            body
-        }
-    }
-}
-`
 
 export default Home;

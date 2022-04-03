@@ -40,9 +40,9 @@ function PostForm() {
     return (
         <>
                 <Form onSubmit={onSubmit}>
-            <h2>Create a post:</h2>
+            <label className="dashTitle">Tell your story...</label>
             <Form.Field>
-                <Form.Input
+                <Form.TextArea
                     placeholder="Hi World!"
                     name="body"
                     onChange={onChange}

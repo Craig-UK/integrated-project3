@@ -27,7 +27,6 @@ function App() {
           <AuthRoute exact path="/" component={Launch} />
           <AuthRoute2 exact path="/dash" component={Home} /> 
           <AuthRoute2 exact path="/user" component={User} />           
-
           <AuthRoute exact path="/register" component={Register} />
           <Route exact path= "/posts/:postId" component={SinglePost}></Route>
 

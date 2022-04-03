@@ -9,7 +9,8 @@ import {
   Grid,
   Image,
   Icon,
-  Label
+  Label,
+  Container
 } from 'semantic-ui-react';
 
 import { AuthContext } from '../context/auth';
@@ -54,17 +55,26 @@ function SinglePost(props){
         const {id, body, createdAt, username, comments, likes,  likeCount, commentCount} = data.getPost;
         console.log();
         postMarkup = (
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width={2}>
-                    <Image
-            float='right'
-            size='small'
-            src='https://react.semantic-ui.com/images/avatar/large/molly.png'
-          />   
-                    </Grid.Column>
-                    <Grid.Column width={10}>
-                    <Card fluid>
+          <>
+            <Grid columns="1">
+                    <Grid.Row className="page-title">
+                <h1>Recent Posts</h1>
+              </Grid.Row>
+                <Grid.Row className="feed">
+                    
+                    <Grid columns="2" width={70}>
+                      <Grid.Column width={3}style={{marginBottom: 4, marginLeft: 190 }}>
+                      <Image
+                      
+                      size='medium'
+                      src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+                      display='inline-block'
+                      />   
+                      </Grid.Column>
+                    <Grid.Column >
+                                   
+                    
+                    <Card fluid > 
                         <Card.Content>
                             <Card.Header>{username}</Card.Header>
                             <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
@@ -79,6 +89,14 @@ function SinglePost(props){
                             )}
                         </Card.Content>
                     </Card>
+                    
+                    </Grid.Column>
+                    </Grid>
+
+
+                    
+
+                    <Grid.Column style={{marginBottom: 40, marginLeft: 160, marginRight: 160 }}>
                     { user && (
                       <Card fluid>
                         <Card.Content>
@@ -120,6 +138,7 @@ function SinglePost(props){
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </>
         )
     }
     return postMarkup;

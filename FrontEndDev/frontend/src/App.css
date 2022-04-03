@@ -17,20 +17,36 @@
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.dashTitle{
+  font-family:cursive;
+  text-align: left;
+  font-size: large;
+  font-weight: 800; 
+
+}
+
 .form-container {
   width: 320px;
   margin: auto;
 }
 body {
   background-color: rgb(255, 255, 255);
+
   color:antiquewhite;
 }
 .feed {
   background-color: rgba(140, 169, 207,0.4);
+  color:black;
+
 }
 .Menu {
   background-color: rgba(0, 2, 5, 0) !important;
 }
 .form-container {
   background-color: rgb(255, 255, 255);
+}
+.newPost{
+  color:black;
+  max-width: 60%;
+  text-align: center;
 }
