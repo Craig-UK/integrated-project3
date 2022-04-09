@@ -16,6 +16,15 @@
   color:antiquewhite;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.profile-info{
+  display: block !important;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+  background-color: rgb(232, 113, 49);
+  color:antiquewhite;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 .dashTitle{
   font-family:cursive;

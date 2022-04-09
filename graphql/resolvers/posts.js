@@ -22,6 +22,7 @@ module.exports = {
                 throw new Error(err);
             }
         },
+
         
         async getPost(_, { postId }) {
             try {
@@ -98,5 +99,6 @@ module.exports = {
                 return post;
             } else throw new UserInputError('Post does not exist');
         }
+        
     },
 };
