@@ -59,7 +59,7 @@ module.exports = {
     },
     async register(
       _,
-      { registerInput: { username, email, password, confirmPassword } },
+      { registerInput: { username, email, first_name, last_name, course, password, confirmPassword } },
       context,
       info
     ) {
@@ -67,6 +67,9 @@ module.exports = {
       const { valid, errors } = validateRegisterInput(
         username,
         email,
+        first_name,
+        last_name,
+        course,
         password,
         confirmPassword,
       );
@@ -95,7 +98,10 @@ module.exports = {
       const newUser = new User({
         email,
         username,
+        first_name,
+        last_name,
         password,
+        course,
         createdAt: new Date().toISOString(),
       });
 

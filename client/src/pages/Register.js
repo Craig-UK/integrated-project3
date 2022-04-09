@@ -14,9 +14,12 @@ function Register(props) {
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    course: ''
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
@@ -49,6 +52,24 @@ function Register(props) {
           onChange={onChange}
         />
         <Form.Input
+          label="Firstname"
+          placeholder="Username.."
+          name="first_name"
+          type="text"
+          value={values.first_name}
+          error={errors.first_name}
+          onChange={onChange}
+        />
+        <Form.Input
+          label="Lastname"
+          placeholder="Username.."
+          name="last_name"
+          type="text"
+          value={values.last_name}
+          error={errors.last_name}
+          onChange={onChange}
+        />
+        <Form.Input
           label="Email"
           placeholder="Email.."
           name="email"
@@ -75,6 +96,15 @@ function Register(props) {
           error={errors.confirmPassword}
           onChange={onChange}
         />
+        <Form.Input
+          label="Course"
+          placeholder="Course.."
+          name="course"
+          type="text"
+          value={values.course}
+          error={errors.course}
+          onChange={onChange}
+        />
         <Button type="submit" primary>
           Register
         </Button>
@@ -98,6 +128,9 @@ const REGISTER_USER = gql`
     $email: String!
     $password: String!
     $confirmPassword: String!
+    $first_name: String!
+    $last_name: String!
+    $course: String!
   ) {
     register(
       registerInput: {
@@ -105,11 +138,17 @@ const REGISTER_USER = gql`
         email: $email
         password: $password
         confirmPassword: $confirmPassword
+        first_name: $first_name
+        last_name: $last_name
+        course: $course
       }
     ) {
       id
       email
       username
+      first_name
+      last_name
+      course
       createdAt
       token
     }
