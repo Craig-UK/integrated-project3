@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Grid } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 
@@ -14,15 +14,18 @@ function Register(props) {
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    course: ''
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, { data: { register: userData }}) {
       context.login(userData);
-      props.history.push('/dash');
+      props.history.push('/');
     },
     onError(err) {
         setErrors(err.graphQLErrors[0].extensions.errors);
@@ -36,9 +39,13 @@ function Register(props) {
   }
 
   return (
+    <Grid columns={1} >
+    <Grid.Row className="page-title">
+        <h1>Register</h1>
+    </Grid.Row>
+    <Grid.Row className="feed">
     <div className="form-container">
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
-        <h1>Register</h1>
         <Form.Input
           label="Username"
           placeholder="Username.."
@@ -46,6 +53,24 @@ function Register(props) {
           type="text"
           value={values.username}
           error={errors.username}
+          onChange={onChange}
+        />
+        <Form.Input
+          label="Firstname"
+          placeholder="Username.."
+          name="first_name"
+          type="text"
+          value={values.first_name}
+          error={errors.first_name}
+          onChange={onChange}
+        />
+        <Form.Input
+          label="Lastname"
+          placeholder="Username.."
+          name="last_name"
+          type="text"
+          value={values.last_name}
+          error={errors.last_name}
           onChange={onChange}
         />
         <Form.Input
@@ -75,8 +100,19 @@ function Register(props) {
           error={errors.confirmPassword}
           onChange={onChange}
         />
+        <Form.Input
+          label="Course"
+          placeholder="Course.."
+          name="course"
+          type="text"
+          value={values.course}
+          error={errors.course}
+          onChange={onChange}
+        />
         <Button type="submit" primary>
           Register
+          {console.log(values.password)}
+          {console.log(values.confirmPassword)}
         </Button>
       </Form>
       {Object.keys(errors).length > 0 && (
@@ -89,7 +125,8 @@ function Register(props) {
         </div>
       )}
     </div>
-  );
+    </Grid.Row>
+  </Grid>);
 }
 
 const REGISTER_USER = gql`
@@ -98,6 +135,9 @@ const REGISTER_USER = gql`
     $email: String!
     $password: String!
     $confirmPassword: String!
+    $first_name: String!
+    $last_name: String!
+    $course: String!
   ) {
     register(
       registerInput: {
@@ -105,11 +145,17 @@ const REGISTER_USER = gql`
         email: $email
         password: $password
         confirmPassword: $confirmPassword
+        first_name: $first_name
+        last_name: $last_name
+        course: $course
       }
     ) {
       id
       email
       username
+      first_name
+      last_name
+      course
       createdAt
       token
     }
