@@ -37,7 +37,7 @@ function MenuBar() {
             active={activeItem === 'user'}
             as={Link}
             // gives us the ability to make use of the React link function
-            to="/user"
+            to={`/user/${user.username}`}
           />
 
          <Menu.Item
@@ -54,7 +54,7 @@ function MenuBar() {
       <Image
       name='home'
       src={pic}
-      size="tiny"
+      size="medium"
       //defines the name of the tab
       active={activeItem === 'dash'}
       as={Link}
@@ -70,7 +70,7 @@ function MenuBar() {
             active={activeItem === 'login'}
             onClick={handleItemClick}
             as={Link}
-            to="/login"
+            to="/"
           />
           <Menu.Item
             name='register'

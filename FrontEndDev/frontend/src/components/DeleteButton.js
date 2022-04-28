@@ -35,7 +35,7 @@ function DeleteButton({ postId, commentId, callback }){
     return(
         <>
         <MyPopup
-           content={commentId ? 'Delete Comment' : 'Delete Post'} 
+           content={commentId ? 'Delete Comment' : 'Delete Post'}
            >
            <Button color='red' 
            floated='right' onClick={() => setConfirmOpen(true)}>
@@ -45,7 +45,7 @@ function DeleteButton({ postId, commentId, callback }){
        
            
            </MyPopup>
-            <Confirm open={confirmOpen} onCancel={() => setConfirmOpen(false)} onConfirm={deletePostOrMutation} />
+            <Confirm color='black' open={confirmOpen} onCancel={() => setConfirmOpen(false)} onConfirm={deletePostOrMutation} />
         </>
     )
 }

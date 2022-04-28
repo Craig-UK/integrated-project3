@@ -67,11 +67,11 @@ module.exports = {
       const { valid, errors } = validateRegisterInput(
         username,
         email,
+        password,
+        confirmPassword,
         first_name,
         last_name,
         course,
-        password,
-        confirmPassword,
       );
 
       // if not valid, return errors
