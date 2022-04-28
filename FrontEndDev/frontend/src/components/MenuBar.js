@@ -54,7 +54,7 @@ function MenuBar() {
       <Image
       name='home'
       src={pic}
-      size="tiny"
+      size="medium"
       //defines the name of the tab
       active={activeItem === 'dash'}
       as={Link}

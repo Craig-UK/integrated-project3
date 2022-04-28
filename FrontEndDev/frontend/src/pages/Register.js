@@ -57,7 +57,7 @@ function Register(props) {
         />
         <Form.Input
           label="Firstname"
-          placeholder="Username.."
+          placeholder="First Name..."
           name="first_name"
           type="text"
           value={values.first_name}
@@ -66,7 +66,7 @@ function Register(props) {
         />
         <Form.Input
           label="Lastname"
-          placeholder="Username.."
+          placeholder="Surname..."
           name="last_name"
           type="text"
           value={values.last_name}
